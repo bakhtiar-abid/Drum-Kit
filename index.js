@@ -8,6 +8,7 @@ document.querySelectorAll(".drum")[i].addEventListener("click", function () {
    var buttonInnerHTML = this.innerHTML;
    makeSound(buttonInnerHTML);
 
+addingAnimation(buttonInnerHTML);
  
 });
 
@@ -15,6 +16,7 @@ document.querySelectorAll(".drum")[i].addEventListener("click", function () {
 
   document.addEventListener("keypress", function (event) {
      makeSound(event.key);
+     addingAnimation(event.key);
   });
 
 function makeSound(key){
@@ -53,7 +55,15 @@ function makeSound(key){
          break;
    }
 }
+ function addingAnimation (currentKey){
+var activeButton = document.querySelector("." + currentKey);
 
+activeButton.classList.add("pressed");
+
+setTimeout(function(){
+   activeButton.classList.remove("pressed");
+}, 100);
+ }
 }
 
 // var audio = new Audio("/sounds/tom-1.mp3");
